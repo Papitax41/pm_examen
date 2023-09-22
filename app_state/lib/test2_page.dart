@@ -13,21 +13,26 @@ class _Test2PageState extends State<Test2Page> {
   double imc = 0;
   String resultado = "";
   String imagen = "";
+  String mensaje = ""; // Agregamos una variable para el mensaje condicional
 
   @override
   Widget build(BuildContext context) {
     if (imc < 18.5) {
       resultado = "Bajo peso";
-      Image.asset("assets/images/bajo_peso.PNG"); // Ruta de la imagen de bajo peso
+      imagen = "assets/images/bajo_peso.PNG"; // Ruta de la imagen de bajo peso
+      mensaje = "Empieza a comer mas de forma progresiva y realiza ejercicios con peso"; // Mensaje para bajo peso
     } else if (imc >= 18.5 && imc <= 24.9) {
       resultado = "Normal";
       imagen = "assets/images/peso_normal.PNG"; // Ruta de la imagen de peso normal
+      mensaje = "Tienes un peso normal, sigue así"; // Mensaje para peso normal
     } else if (imc >= 25.0 && imc <= 29.9) {
       resultado = "Sobrepeso";
       imagen = "assets/images/sobrepeso.PNG"; // Ruta de la imagen de sobrepeso
+      mensaje = "Empieza a comer un poco menos de lo habitual y realiza ejercicios con peso"; // Mensaje para sobrepeso
     } else {
       resultado = "Obesidad";
-      Image.asset("assets/images/obesidad.PNG"); // Ruta de la imagen de obesidad
+      imagen = "assets/images/obesidad.PNG"; // Ruta de la imagen de obesidad
+      mensaje = "Eealiza un deficit calorico de forma progresiva y realiza ejercicios con peso y de bajo impacto en las rodillas"; // Mensaje para obesidad
     }
 
     return Scaffold(
@@ -118,18 +123,22 @@ class _Test2PageState extends State<Test2Page> {
               ],
             ),
             SizedBox(height: 20),
-            Text(
-              "IMC: ${imc.toStringAsFixed(2)}",
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 20),
             Image.asset(
               imagen,
-              width: 100, // Ajusta el ancho de la imagen según tu preferencia
-              height: 100, // Ajusta la altura de la imagen según tu preferencia
+              width: 400, // Ajusta el ancho de la imagen según tu preferencia
+              height: 200, // Ajusta la altura de la imagen según tu preferencia
+            ),
+            SizedBox(height: 20),
+            Text(
+              "${imc.toStringAsFixed(2)}",
+              style: TextStyle(fontSize: 40,color:Colors.red ),
             ),
             Text(
               resultado,
+              style: TextStyle(fontSize: 20),
+            ),
+            Text(
+              mensaje, // Muestra el mensaje condicional
               style: TextStyle(fontSize: 20),
             ),
           ],
