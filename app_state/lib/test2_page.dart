@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Test2Page extends StatefulWidget {
-  const Test2Page({super.key});
+  const Test2Page({Key? key}) : super(key: key);
 
   @override
   State<Test2Page> createState() => _Test2PageState();
 }
 
 class _Test2PageState extends State<Test2Page> {
-  bool isDescriptionJustify = false;
   double valueGreenSlider = 0;
   double valueBlueSlider = 0;
 
@@ -22,40 +21,47 @@ class _Test2PageState extends State<Test2Page> {
       body: Padding(
         padding: EdgeInsets.all(10.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "Bienvenido, selecciona tu peso y altura",
               style: TextStyle(
-                color: Color.fromRGBO(valueGreenSlider.toInt(), valueBlueSlider.toInt(),120,1),
+                color: Color.fromRGBO(
+                  valueGreenSlider.toInt(),
+                  valueBlueSlider.toInt(),
+                  120,
+                  1,
+                ),
               ),
             ),
-
+            SizedBox(height: 20),
             Text(
-              "Kg",
-              style: TextStyle(
-                color: Color.fromRGBO(valueGreenSlider.toInt(), valueBlueSlider.toInt(),120,1),
-              ),
+              "${valueGreenSlider.toStringAsFixed(0)} Kg",
             ),
-
             Slider(
               min: 0,
               max: 255,
               value: valueGreenSlider,
               onChanged: (value) {
                 print(value);
-                valueGreenSlider = value;
-                setState(() {});
+                setState(() {
+                  valueGreenSlider = value;
+                });
               },
             ),
+            SizedBox(height: 20),
+            Text(
+              "${valueBlueSlider.toStringAsFixed(0)} Cm",
+              ),
             Slider(
               min: 0,
               max: 255,
               value: valueBlueSlider,
-              label: valueBlueSlider.round().toString(),
               onChanged: (value) {
                 print(value);
-                valueBlueSlider = value;
-                setState(() {});
+                setState(() {
+                  valueBlueSlider = value;
+                });
               },
             ),
           ],
