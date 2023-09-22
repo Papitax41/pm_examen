@@ -25,14 +25,6 @@ class _Test2PageState extends State<Test2Page> {
           children: [
             Text(
               "Bienvenido, selecciona tu peso y altura",
-              style: TextStyle(
-                color: Color.fromRGBO(
-                  valueGreenSlider.toInt(),
-                  valueBlueSlider.toInt(),
-                  120,
-                  1,
-                ),
-              ),
             ),
             SizedBox(height: 20),
             Text(
@@ -43,7 +35,6 @@ class _Test2PageState extends State<Test2Page> {
               max: 255,
               value: valueGreenSlider,
               onChanged: (value) {
-                print(value);
                 setState(() {
                   valueGreenSlider = value;
                 });
@@ -58,7 +49,6 @@ class _Test2PageState extends State<Test2Page> {
               max: 255,
               value: valueBlueSlider,
               onChanged: (value) {
-                print(value);
                 setState(() {
                   valueBlueSlider = value;
                 });
