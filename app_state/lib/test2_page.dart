@@ -78,14 +78,24 @@ class _Test2PageState extends State<Test2Page> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0), 
+                    padding: EdgeInsets.symmetric(horizontal: 5.0),
                     child: ElevatedButton(
                       onPressed: () {
                         setState(() {
                           imc = peso / ((altura / 100) * (altura / 100));
                         });
                       },
-                      child: Text("Calcular IMC"),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.play_arrow_sharp),
+                          SizedBox(width: 10),
+                          Text(
+                            "Calcular",
+                            style: TextStyle(fontSize: 30),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
