@@ -9,7 +9,6 @@ class Test2Page extends StatefulWidget {
 
 class _Test2PageState extends State<Test2Page> {
   bool isDescriptionJustify = false;
-  double valueRedSlider = 0;
   double valueGreenSlider = 0;
   double valueBlueSlider = 0;
 
@@ -26,6 +25,13 @@ class _Test2PageState extends State<Test2Page> {
           children: [
             Text(
               "Bienvenido, selecciona tu peso y altura",
+              style: TextStyle(
+                color: Color.fromRGBO(valueGreenSlider.toInt(), valueBlueSlider.toInt(),120,1),
+              ),
+            ),
+
+            Text(
+              "Kg",
               style: TextStyle(
                 color: Color.fromRGBO(valueGreenSlider.toInt(), valueBlueSlider.toInt(),120,1),
               ),
