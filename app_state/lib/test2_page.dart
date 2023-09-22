@@ -11,9 +11,25 @@ class _Test2PageState extends State<Test2Page> {
   double peso = 0;
   double altura = 0;
   double imc = 0;
+  String resultado = "";
+  String imagen = "";
 
   @override
   Widget build(BuildContext context) {
+    if (imc < 18.5) {
+      resultado = "Bajo peso";
+      Image.asset("assets/images/bajo_peso.PNG"); // Ruta de la imagen de bajo peso
+    } else if (imc >= 18.5 && imc <= 24.9) {
+      resultado = "Normal";
+      imagen = "assets/images/peso_normal.PNG"; // Ruta de la imagen de peso normal
+    } else if (imc >= 25.0 && imc <= 29.9) {
+      resultado = "Sobrepeso";
+      imagen = "assets/images/sobrepeso.PNG"; // Ruta de la imagen de sobrepeso
+    } else {
+      resultado = "Obesidad";
+      Image.asset("assets/images/obesidad.PNG"); // Ruta de la imagen de obesidad
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text("IMC App"),
@@ -104,6 +120,16 @@ class _Test2PageState extends State<Test2Page> {
             SizedBox(height: 20),
             Text(
               "IMC: ${imc.toStringAsFixed(2)}",
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 20),
+            Image.asset(
+              imagen,
+              width: 100, // Ajusta el ancho de la imagen según tu preferencia
+              height: 100, // Ajusta la altura de la imagen según tu preferencia
+            ),
+            Text(
+              resultado,
               style: TextStyle(fontSize: 20),
             ),
           ],
