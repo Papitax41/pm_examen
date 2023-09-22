@@ -74,17 +74,26 @@ class _Test2PageState extends State<Test2Page> {
               },
             ),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                imc = peso / (altura * altura); // Realiza el cálculo del IMC al presionar el botón
-                });
-              },
-              child: Text("Calcular IMC"),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0), 
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          imc = peso / ((altura / 100) * (altura / 100));
+                        });
+                      },
+                      child: Text("Calcular IMC"),
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 20),
             Text(
-              "IMC: ${imc.toStringAsFixed(2)}", // Muestra el resultado del IMC
+              "IMC: ${imc.toStringAsFixed(2)}",
               style: TextStyle(fontSize: 20),
             ),
           ],
